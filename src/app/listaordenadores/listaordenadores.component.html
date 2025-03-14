@@ -1,0 +1,20 @@
+<caption class="h2"> Ordenadores </caption>
+
+<table class="table">
+    <tr>
+        <th>Numero</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Precio</th>
+    </tr>
+    @for(ordenador of listaOrdenadores;track ordenador.numero){
+        <tr>
+            <td>{{ordenador.numero}}</td>
+            <td>{{ordenador.marca}}</td>
+            <td>{{ordenador.modelo}}</td>
+            <td>{{ordenador.precio}}</td>
+            <td><button class="btn btn-danger" (click)="borrar(ordenador.numero)">Borrar</button></td>
+        </tr>
+    }
+
+</table>
