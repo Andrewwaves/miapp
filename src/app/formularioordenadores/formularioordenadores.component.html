@@ -1,0 +1,22 @@
+<form>
+    <div class="mb-3">
+        <label for="numero" class="form-label text-primary">Numero</label>
+        <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="ordenador.numero" placeholder="Introduce el Numero" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="numero" class="form-label text-primary">Numero de Prestamo</label>
+        <input type="number" class="form-control" id="numero" name="numero" [(ngModel)]="ejemplar.numero" placeholder="Introduce el Numero de Prestamo" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="disponible" class="form-label text-primary">Disponibilidad </label>
+        <input type="checkbox" class="form-check-input" id="disponible" name="disponible" [(ngModel)]="ejemplar.disponible">
+    </div>
+
+    
+    <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-warning text-white" (click)="insertar()">Guardar</button>
+    </div>
+    
+</form>
