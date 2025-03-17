@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ordenador } from './ordenador';
@@ -7,6 +7,9 @@ import { Ordenador } from './ordenador';
   providedIn: 'root'
 })
 export class OrdenadorRestService {
+  getMarcas() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private httpClient:HttpClient) { }
 
@@ -20,5 +23,9 @@ export class OrdenadorRestService {
 
   public borrar(numero:number):Observable<Ordenador>{
     return this.httpClient.delete<Ordenador>(`http://localhost:8080/webapi/ordenadores/${numero}`)
+  }
+
+  public filtrar(marca: string): Observable<Ordenador[]> {
+    return this.httpClient.get<Ordenador[]>(`http://localhost:8080/webapi/ordenadores`);
   }
 }

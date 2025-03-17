@@ -1,20 +1,54 @@
-<caption class="h2"> Ordenadores </caption>
+<caption class="h2 text-center">Ordenadores</caption>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <!-- Tabla de ordenadores -->
 
-<table class="table">
-    <tr>
-        <th>Numero</th>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Precio</th>
-    </tr>
-    @for(ordenador of listaOrdenadores;track ordenador.numero){
-        <tr>
-            <td>{{ordenador.numero}}</td>
-            <td>{{ordenador.marca}}</td>
-            <td>{{ordenador.modelo}}</td>
-            <td>{{ordenador.precio}}</td>
-            <td><button class="btn btn-danger" (click)="borrar(ordenador.numero)">Borrar</button></td>
-        </tr>
-    }
+        <table class="table table-striped">
+            <thead class="table-warning">
+                <tr>
+                    <th class="col-2">Número</th>
+                    <th class="col-3">Marca</th>
+                    <th class="col-3">Modelo</th>
+                    <th class="col-2">Precio</th>
+                    <th class="col-2 text-center">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(ordenador of listaOrdenadores;track ordenador.numero){
+                <tr>
+                    <td>{{ ordenador.numero }}</td>
+                    <td>{{ ordenador.marca }}</td>
+                    <td>{{ ordenador.modelo }}</td>
+                    <td>{{ ordenador.precio }}</td>
+                    <td><button class="btn btn-danger " (click)="borrar(ordenador.numero)">Borrar</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
 
-</table>
+        <!-- Botón para acceder al formulario -->
+        <button class="btn btn-warning" routerLink="/formularioordenadores">Formulario</button>
+
+        <div>
+            <h1>Filtro de Elementos</h1>
+          
+            <!-- Dropdown para seleccionar el filtro -->
+            <select [(ngModel)]="selectedFilter">
+              <option value="">Selecciona un filtro</option>
+              <option value="modelo">Modelo</option>
+              <option value="marca">Marca</option>
+            </select>
+          
+            <!-- Campo de búsqueda -->
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Escribe para filtrar..." />
+
+            <button (click)="applyFilter()">Filtrar</button>
+          
+            <!-- Lista de elementos filtrados -->
+            <div *ngFor="let item of filteredItems">
+              {{ item.nombre }} - {{ item[selectedFilter] }}
+            </div>
+          </div>
+    </div>
+</div>
